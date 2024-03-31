@@ -9,26 +9,44 @@
 <body>
 <div class="container">
     <div id="left">
-        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
-            TEXT
+        <div class = "year-holder">
+            <div id = "year1"><center> Autumn </center></div>
+            <div id = "year2"><center>Spring</center></div>
         </div>
-        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
-            TEXT
+        <div class = "year-holder">
+            <div id = "year3"><center> Autumn </center></div>
+            <div id = "year4"><center>Spring</center></div>
         </div>
-        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
-            TEXT
+        <div class = "year-holder">
+            <div id = "year5"><center> Autumn </center></div>
+            <div id = "year6"><center>Spring</center></div>
         </div>
-        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
-            TEXT
+        <div class = "year-holder">
+            <div id = "year7"><center> Autumn </center></div>
+            <div id = "year8"><center>Spring</center></div>
         </div>
-        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
-            TEXT
-        </div>
+        
     </div>
     <div id="right">
-
+        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
+            TEXT
+        </div>
+        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
+            TEXT
+        </div>
+        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
+            TEXT
+        </div>
+        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
+            TEXT
+        </div>
+        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
+            TEXT
+        </div>
     </div>
 </div>
+
+
 
 
 
@@ -39,7 +57,16 @@
 
 let lists = document.getElementsByClassName("list");
 let rightBox = document.getElementById("right");
-let leftBox = document.getElementById("left");
+let year1 = document.getElementById("year1")
+let year2 = document.getElementById("year2")
+let year3 = document.getElementById("year3")
+let year4 = document.getElementById("year4")
+let year5 = document.getElementById("year5")
+let year6 = document.getElementById("year6")
+let year7 = document.getElementById("year7")
+let year8 = document.getElementById("year8")
+
+
 for(list of lists){
     list.addEventListener("dragstart", function(e){
         let selected = e.target;
@@ -52,11 +79,11 @@ for(list of lists){
             selected = null;
         })
 
-        leftBox.addEventListener("dragover", function(e){
+        year1.addEventListener("dragover", function(e){
             e.preventDefault();
         })
-        leftBox.addEventListener("drop", function(e){
-            leftBox.appendChild(selected);
+        year1.addEventListener("drop", function(e){
+            year1.appendChild(selected);
             selected = null;
         })
     })
