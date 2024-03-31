@@ -4,7 +4,19 @@
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
-
+.title-container{
+    width: 100%;
+    min-height: 100vh;
+    background: #0b0423;
+    color: white;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+#title{
+    margin-bottom: 10%;
+}
 
 .container{
     width: 100%;
@@ -15,8 +27,16 @@
     justify-content: center;
 }
 
-
 #left{
+    width: 300px;
+    min-height: 400px;
+    margin: 20px;
+    color: white;
+    border: 2px dashed #fff;
+}
+
+
+#middle{
     width: 75%;
     display: flex;
     border: 2px dashed #fff;
@@ -48,6 +68,7 @@
     min-height: 400px;
     margin: 20px;
     border: 2px dashed #fff;
+    color: white;
 }
 
 .list{
