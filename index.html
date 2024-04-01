@@ -5,46 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drag and Drop</title>
     <link rel = "stylesheet" href = "style.css">
+    <script type="text/javascript" src="sch"></script>
+
 </head>
 <body>
     <div class = title-container>
-        <center><h1 id = "title">Graduation Planner</h1></center>
+        <center><h1 class = "title">Graduation Planner</h1></center>
 <div class="container">
-    <div id = "left"><center>Completed</center></div>
+    <div id = "left">
+        <div id = "left-requirements">
+            <center class = "title"> Requirements </center>
+
+        </div>
+        <div id = "left-completed">
+        <center class = "title">Completed</center>
+    </div>
+    </div>
     <div id="middle">
         <div class = "year-holder">
-            <div id = "year1"><center> Autumn </center></div>
-            <div id = "year2"><center>Spring</center></div>
+            <div id = "autumn1"><center class = "title"> Autumn </center></div>
+            <div id = "spring1"><center class = "title">Spring</center></div>
         </div>
         <div class = "year-holder">
-            <div id = "year3"><center> Autumn </center></div>
-            <div id = "year4"><center>Spring</center></div>
+            <div id = "autumn2"><center class = "title"> Autumn </center></div>
+            <div id = "spring2"><center class = "title">Spring</center></div>
         </div>
         <div class = "year-holder">
-            <div id = "year5"><center> Autumn </center></div>
-            <div id = "year6"><center>Spring</center></div>
+            <div id = "autumn3"><center class = "title"> Autumn </center></div>
+            <div id = "spring3"><center class = "title">Spring</center></div>
         </div>
         <div class = "year-holder">
-            <div id = "year7"><center> Autumn </center></div>
-            <div id = "year8"><center>Spring</center></div>
+            <div id = "autumn4"><center class = "title"> Autumn </center></div>
+            <div id = "spring4"><center class = "title">Spring</center></div>
         </div>
         
     </div>
     <div id="right">
-        <center>Classes</center>
-        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
+        <center class = "title">Classes</center>
+        <div class="list" draggable="true"><img draggable="false" src = "drag_drop_icon.png">
             TEXT
         </div>
-        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
+        <div class="list" draggable="true"><img draggable="false" src = "drag_drop_icon.png">
             TEXT
         </div>
-        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
+        <div class="list" draggable="true"><img draggable="false" src = "drag_drop_icon.png">
             TEXT
         </div>
-        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
+        <div class="list" draggable="true"><img draggable="false" src = "drag_drop_icon.png">
             TEXT
         </div>
-        <div class="list" draggable="true"><img src = "drag_drop_icon.png">
+        <div class="list" draggable="true"><img draggable="false" src = "drag_drop_icon.png">
             TEXT
         </div>
     </div>
@@ -61,15 +71,15 @@
 
 let lists = document.getElementsByClassName("list");
 let rightBox = document.getElementById("right");
-let year1 = document.getElementById("year1");
-let year2 = document.getElementById("year2");
-let year3 = document.getElementById("year3");
-let year4 = document.getElementById("year4");
-let year5 = document.getElementById("year5");
-let year6 = document.getElementById("year6");
-let year7 = document.getElementById("year7");
-let year8 = document.getElementById("year8");
-let completed = document.getElementById("left");
+let year1 = document.getElementById("autumn1");
+let year2 = document.getElementById("spring1");
+let year3 = document.getElementById("autumn2");
+let year4 = document.getElementById("spring2");
+let year5 = document.getElementById("autumn3");
+let year6 = document.getElementById("spring3");
+let year7 = document.getElementById("autumn4");
+let year8 = document.getElementById("spring4");
+let completed = document.getElementById("left-completed");
 const years = [year1,year2,year3,year4,year5,year6,year7,year8];
 
 
@@ -177,6 +187,8 @@ for(list of lists){
             completed.appendChild(selected);
             selected = null;
         })
+
+        
         
 
         
