@@ -39,7 +39,7 @@
     min-height: 100vh;
     width: 100%;
     color: white;
-    border: 2px dashed #fff;
+    border: 2px solid #fff;
 }
 #left-requirements{
     margin-bottom: 5%;
@@ -70,15 +70,15 @@
 #autumn1, #autumn2, #autumn3, #autumn4{
     width: 100%;
     min-height: 50vh;
-    border: 2px dashed #fff;
+    border: 2px solid #fff;
 }
 
 #spring1, #spring2, #spring3, #spring4{
     width: 100%;
     min-height: 50vh;
-    border-top: 2px dashed #fff;
-    border-right: 2px dashed #fff;
-    border-bottom: 2px dashed #fff;
+    border-top: 2px  solid#fff;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
 }
 
 #autumn2, #spring2{
@@ -93,7 +93,7 @@
     width: 25%;
     min-height: 100vh;
     margin: 20px;
-    border: 2px dashed #fff;
+    border: 2px solid #fff;
     color: white;
 }
 
