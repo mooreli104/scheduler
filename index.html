@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drag and Drop</title>
     <link rel = "stylesheet" href = "style.css">
-    <script type="text/javascript" src="sch"></script>
+    <script type="text/javascript" src="script.js"></script>
 
 </head>
 <body>
@@ -15,7 +15,11 @@
     <div id = "left">
         <div id = "left-requirements">
             <center class = "title"> Requirements </center>
-            <div class = "requirements"></div>
+            <ul id = "list container">
+                <li class = "checked">Task 1</li>
+                <li>Task 2</li>
+                <li>Task 3</li>
+            </ul>
 
         </div>
         <div id = "left-completed">
@@ -62,14 +66,8 @@
 </div>
 </div>
 
-
-
-
-
-
-
 <script>
-
+    
 let lists = document.getElementsByClassName("list");
 let rightBox = document.getElementById("right");
 let year1 = document.getElementById("autumn1");
@@ -81,7 +79,6 @@ let year6 = document.getElementById("spring3");
 let year7 = document.getElementById("autumn4");
 let year8 = document.getElementById("spring4");
 let completed = document.getElementById("left-completed");
-const years = [year1,year2,year3,year4,year5,year6,year7,year8];
 
 
 for(list of lists){
@@ -95,27 +92,6 @@ for(list of lists){
             rightBox.appendChild(selected);
             selected = null;
         })
-
-    //     for(var i = 0; i<years.length;i++){
-    //     years[i].addEventListener("dragover", function(e){
-    //         e.preventDefault();
-    //     })
-    //     years[i].addEventListener("drop", function(e){
-    //         years[i].appendChild(selected);
-    //         selected = null;
-    //     })
-    // }
-
-//     [year1, year2, year3, year4, year5, year6, year7, year8].forEach((element)=>{
-//         element.addEventListener("dragover", function(e){
-//             e.preventDefault();
-//         })
-//         element.addEventListener("drop", function(e){
-//             element.appendChild(selected);
-//             selected = null;
-//         })
-//    });
-// });
         
         year1.addEventListener("dragover", function(e){
             e.preventDefault();
@@ -196,6 +172,9 @@ for(list of lists){
     
     })
 }
+
 </script>
+
+
 </body>
 </html>
