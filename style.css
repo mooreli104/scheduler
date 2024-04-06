@@ -98,9 +98,7 @@ margin-bottom: 2.5%;
     border: 2px solid #fff;
     color: white;
 }
-text{
-    draggable: false;
-}
+
 
 .list{
     background: #e91e63;
