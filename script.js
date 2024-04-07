@@ -3,6 +3,8 @@ let lists = document.getElementsByClassName("list");
 let listContainer = document.getElementById("list-container");
 let dragAndDrop = document.querySelectorAll(".semester, #right, #left-completed");
 let required = document.querySelectorAll("#task-1");
+
+//With querySelectorALl, must loop over elements (like an array of each element with .semester class
 let semester = document.querySelectorAll(".semester");
 
 
@@ -25,9 +27,7 @@ for(list of lists){
             item.addEventListener("drop", function(e){
                 item.appendChild(selected);
                 selected = null;
-
                completeRequirement();
-
             })
         });
     })
