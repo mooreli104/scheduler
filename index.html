@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drag and Drop</title>
     <link rel = "stylesheet" href = "style.css">
-    <script type="text/javascript" src="script.js"></script>
+    
 
 </head>
 <body>
@@ -15,8 +15,8 @@
     <div id = "left">
         <div id = "left-requirements">
             <center class = "title"> Requirements </center>
-            <ul id = "list container">
-                <li class = "checked">Task 1</li>
+            <ul id = "list-container">
+                <li >Task 1</li>
                 <li>Task 2</li>
                 <li>Task 3</li>
             </ul>
@@ -28,20 +28,20 @@
     </div>
     <div id="middle">
         <div class = "year-holder">
-            <div id = "autumn1"><center class = "title"> Autumn </center></div>
-            <div id = "spring1"><center class = "title">Spring</center></div>
+            <div id = "autumn1" class = "year"><center class = "title"> Autumn </center></div>
+            <div id = "spring1" class = 'year'><center class = "title">Spring</center></div>
         </div>
         <div class = "year-holder">
-            <div id = "autumn2"><center class = "title"> Autumn </center></div>
-            <div id = "spring2"><center class = "title">Spring</center></div>
+            <div id = "autumn2" class = "year"><center class = "title"> Autumn </center></div>
+            <div id = "spring2" class = "year"><center class = "title">Spring</center></div>
         </div>
         <div class = "year-holder">
-            <div id = "autumn3"><center class = "title"> Autumn </center></div>
-            <div id = "spring3"><center class = "title">Spring</center></div>
+            <div id = "autumn3" class = "year"><center class = "title"> Autumn </center></div>
+            <div id = "spring3" class = "year"><center class = "title">Spring</center></div>
         </div>
         <div class = "year-holder">
-            <div id = "autumn4"><center class = "title"> Autumn </center></div>
-            <div id = "spring4"><center class = "title">Spring</center></div>
+            <div id = "autumn4" class ="year"><center class = "title"> Autumn </center></div>
+            <div id = "spring4" class = "year"><center class = "title">Spring</center></div>
         </div>
         
     </div>
@@ -66,115 +66,6 @@
 </div>
 </div>
 
-<script>
-    
-let lists = document.getElementsByClassName("list");
-let rightBox = document.getElementById("right");
-let year1 = document.getElementById("autumn1");
-let year2 = document.getElementById("spring1");
-let year3 = document.getElementById("autumn2");
-let year4 = document.getElementById("spring2");
-let year5 = document.getElementById("autumn3");
-let year6 = document.getElementById("spring3");
-let year7 = document.getElementById("autumn4");
-let year8 = document.getElementById("spring4");
-let completed = document.getElementById("left-completed");
-
-
-for(list of lists){
-    list.addEventListener("dragstart", function(e){
-        let selected = e.target;
-
-        rightBox.addEventListener("dragover", function(e){
-            e.preventDefault();
-        })
-        rightBox.addEventListener("drop", function(e){
-            rightBox.appendChild(selected);
-            selected = null;
-        })
-        
-        year1.addEventListener("dragover", function(e){
-            e.preventDefault();
-        })
-        year1.addEventListener("drop", function(e){
-            year1.appendChild(selected);
-            selected = null;
-        })
-
-        year2.addEventListener("dragover", function(e){
-            e.preventDefault();
-        })
-        year2.addEventListener("drop", function(e){
-            year2.appendChild(selected);
-            selected = null;
-        })
-
-        year3.addEventListener("dragover", function(e){
-            e.preventDefault();
-        })
-        year3.addEventListener("drop", function(e){
-            year3.appendChild(selected);
-            selected = null;
-        })
-
-        year4.addEventListener("dragover", function(e){
-            e.preventDefault();
-        })
-        year4.addEventListener("drop", function(e){
-            year4.appendChild(selected);
-            selected = null;
-        })
-
-        year5.addEventListener("dragover", function(e){
-            e.preventDefault();
-        })
-        year5.addEventListener("drop", function(e){
-            year5.appendChild(selected);
-            selected = null;
-        })
-
-        year6.addEventListener("dragover", function(e){
-            e.preventDefault();
-        })
-        year6.addEventListener("drop", function(e){
-            year6.appendChild(selected);
-            selected = null;
-        })
-
-        year7.addEventListener("dragover", function(e){
-            e.preventDefault();
-        })
-        year7.addEventListener("drop", function(e){
-            year7.appendChild(selected);
-            selected = null;
-        })
-
-        year8.addEventListener("dragover", function(e){
-            e.preventDefault();
-        })
-        year8.addEventListener("drop", function(e){
-            year8.appendChild(selected);
-            selected = null;
-        })
-
-        completed.addEventListener("dragover", function(e){
-            e.preventDefault();
-        })
-        completed.addEventListener("drop", function(e){
-            completed.appendChild(selected);
-            selected = null;
-        })
-
-        
-        
-
-        
-    
-    })
-}
-
-</script>
-
-
+<script src="script.js"></script>
 </body>
 </html>

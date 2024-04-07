@@ -6,6 +6,7 @@
     user-select: none; /* Standard syntax */
     /* font-size: clamp(1vw, 1rem, 2vw); */
 }
+
 .title-container{
     width: 100%;
     min-height: 100vh;
@@ -116,7 +117,7 @@ margin-bottom: 2.5%;
 }
 
 ul li{
-
+    
     list-style: none;
     font-size: 17px;
     color: red;
