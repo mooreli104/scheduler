@@ -119,7 +119,7 @@ margin-bottom: 2.5%;
 ul li{
     
     list-style: none;
-    font-size: 17px;
+    font-size: 80%;
     color: red;
     padding: 5% 10% 5% 20%;
     user-select: none;
@@ -144,7 +144,37 @@ ul li.checked{
     
 }
 
+
 ul li.checked::before{
-    color:rgb(40, 227, 40);
     background-image: url(checked.png);
 }
+
+li label{
+    display: block;
+    cursor: pointer;
+    padding: 2%;
+    line-height: 150%;
+    text-align: center;
+    font-size: 0.94em;
+}
+
+label::before{
+    content: '►';
+    margin-right: 2%;
+    font-size: 100%;
+}
+
+input[type="radio"]{
+    display: none;
+}
+
+.content{
+    padding: 0 10%;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.fulfilled{
+    max-height: 400px;
+}
+

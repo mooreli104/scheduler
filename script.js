@@ -6,6 +6,7 @@ let required = document.querySelectorAll("#task-1");
 let middle = document.getElementById("middle");
 //With querySelectorALl, must loop over elements (like an array of each element with .semester class
 let semester = document.querySelectorAll(".semester");
+let labels = document.querySelectorAll(".label");
 
 function completeRequirement(){
  required.forEach(function(item){
@@ -42,15 +43,13 @@ for(list of lists){
     });
 }
 
-// if(semester.classList){
-//     required.classList.toggle("checked"); 
-// }
+labels.forEach(function(item){
+    item.addEventListener("click", function(e){
+        let content = document.getElementById("test");
+        content.classList.toggle("fulfilled");
+    });
 
-// listContainer.addEventListener("click",function(e){
-//     if(e.target.tagName === "LI"){
-//         e.target.classList.toggle("checked");
-//     }
-// }, false);
+});
 
 //TRYING TO SAVE THE CLASSES THAT WERE DROPPED INTO THE SEMESTERS
 // function saveData(){
