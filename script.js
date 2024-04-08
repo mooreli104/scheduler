@@ -7,9 +7,9 @@ let required = document.querySelectorAll("#task-1");
 //With querySelectorALl, must loop over elements (like an array of each element with .semester class
 let semester = document.querySelectorAll(".semester");
 
-function classIsInSemester(){
-    semester.forEach(function(item){
-        if(item.contains(lists)){
+function checkChildren(){
+    semester.forEach(function(e){
+        if(e.getElementsByClassName("list")){
             return true;
         }
         else{
@@ -20,8 +20,7 @@ function classIsInSemester(){
 
 function completeRequirement(){
  required.forEach(function(item){
-    
-        if(classIsInSemester()){
+        if(!item.classList.contains("checked")){
             item.classList.add("checked");
         }
         else{
@@ -34,19 +33,22 @@ function completeRequirement(){
 for(list of lists){
     list.addEventListener("dragstart", function(e){
         let selected = e.target;
-
         dragAndDrop.forEach(function(item){
             item.addEventListener("dragover", function(e){
                 e.preventDefault();
             })
             
             item.addEventListener("drop", function(e){
+                if(selected!=null){
                 item.appendChild(selected);
-                selected = null;
                 completeRequirement();
+                }
+                selected = null;
+                
             })
         });
-    })
+        
+    });
 }
 
 // if(semester.classList){
