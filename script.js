@@ -3,25 +3,16 @@ let lists = document.getElementsByClassName("list");
 let listContainer = document.getElementById("list-container");
 let dragAndDrop = document.querySelectorAll(".semester, #right, #left-completed");
 let required = document.querySelectorAll("#task-1");
-
+let middle = document.getElementById("middle");
 //With querySelectorALl, must loop over elements (like an array of each element with .semester class
 let semester = document.querySelectorAll(".semester");
 
-function checkChildren(){
-    semester.forEach(function(e){
-        if(e.getElementsByClassName("list")){
-            return true;
-        }
-        else{
-            return false;
-        }
-    });
-}
-
 function completeRequirement(){
  required.forEach(function(item){
-        if(!item.classList.contains("checked")){
+    let arr = middle.getElementsByClassName("list");
+        if(arr.length>0){
             item.classList.add("checked");
+        
         }
         else{
             item.classList.remove("checked");
