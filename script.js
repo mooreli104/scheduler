@@ -7,10 +7,26 @@ let required = document.querySelectorAll("#task-1");
 //With querySelectorALl, must loop over elements (like an array of each element with .semester class
 let semester = document.querySelectorAll(".semester");
 
+function classIsInSemester(){
+    semester.forEach(function(item){
+        if(item.contains(lists)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    });
+}
 
 function completeRequirement(){
  required.forEach(function(item){
-    item.classList.toggle("checked");
+    
+        if(classIsInSemester()){
+            item.classList.add("checked");
+        }
+        else{
+            item.classList.remove("checked");
+        }
  });   
 }
 
@@ -27,11 +43,12 @@ for(list of lists){
             item.addEventListener("drop", function(e){
                 item.appendChild(selected);
                 selected = null;
-               completeRequirement();
+                completeRequirement();
             })
         });
     })
 }
+
 // if(semester.classList){
 //     required.classList.toggle("checked"); 
 // }
