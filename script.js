@@ -7,8 +7,8 @@ let labels = document.querySelectorAll(".label");
 
 
 
-function completeBigRequirement() {
-    let graduation = document.getElementById("graduation");
+function completeBigRequirement(string) {
+    let graduation = document.getElementById(string);
     let total = graduation.getElementsByClassName("specific");
     let checks = graduation.getElementsByClassName("checked");
     if (total.length === checks.length) {
@@ -19,8 +19,9 @@ function completeBigRequirement() {
     }
 }
 
-function complete() {
-    if (completeBigRequirement()) {
+function complete(string) {
+    let graduation = document.getElementById(string);
+    if (completeBigRequirement(string)) {
         graduation.classList.add("checked");
     }
     else {
@@ -55,7 +56,12 @@ for (list of lists) {
                 if (selected != null) {
                     item.appendChild(selected);
                     completeRequirement();
-                    complete();
+                    let requirements = document.querySelectorAll(".list-container")
+                    requirements.forEach(function(i){
+                        let parent = i.parentElement.parentElement.parentElement;
+                        complete(parent.id);
+                    })
+                    
                 }
                 selected = null;
 
@@ -67,9 +73,13 @@ for (list of lists) {
 
 labels.forEach(function (item) {
     item.addEventListener("click", function (e) {
-        let content = document.getElementById("test");
-        content.classList.toggle("fulfilled");
-        item.classList.toggle("fulfilled");
+
+            let selected = e.target;
+            let arr = selected.getElementsByClassName("content");
+            arr[0].classList.toggle("fulfilled");
+            selected.classList.toggle("fulfilled");
+        
+        
     });
 
 });

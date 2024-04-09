@@ -177,6 +177,7 @@ label.fulfilled::before{
     padding: 0 10%;
     max-height: 0;
     overflow: hidden;
+    text-align: left;
 }
 
 .fulfilled{
