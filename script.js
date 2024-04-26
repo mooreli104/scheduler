@@ -83,7 +83,10 @@ labels.forEach(function (item) {
     });
 
 });
-
+fetch('https://contenttest.osu.edu/v2/classes/search?q=Software')
+.then(res => {
+    console.log(res);
+})
 //TRYING TO SAVE THE CLASSES THAT WERE DROPPED INTO THE SEMESTERS
 // function saveData(){
 //     localStorage.setItem("data", autumn.innerHTML);
