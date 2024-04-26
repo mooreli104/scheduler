@@ -83,16 +83,21 @@ labels.forEach(function (item) {
     });
 
 });
-fetch('https://contenttest.osu.edu/v2/classes/search?q=Software')
-.then(res => {
-    console.log(res);
-})
-//TRYING TO SAVE THE CLASSES THAT WERE DROPPED INTO THE SEMESTERS
-// function saveData(){
-//     localStorage.setItem("data", autumn.innerHTML);
-// }
+//The fetch method in JavaScript is used to make HTTP requests to fetch resources.
+//Simplifies asynchronous data fetching in JavaScript and
+//used for interacting with APIs to retrieve and sned
+//data asynchronously over the web.
 
-// function showClass(){
-//     autumn.innerHTML = localStorage.getItem("data");
-// }
+//Fetch is promise-based (promises are the foundation of asynchronous programming)
+//Promise will resolve or reject
+fetch("https://contenttest.osu.edu/v2/classes/search?q=Software")
+.then(response => {
+    if(!response.ok){
+        throw new Error("Could not fetch resource");
+    }
+    return response.json();
+}) 
+.then(data => console.log(data.data.courses))
+.catch(error => console.log(error));
+
 
