@@ -8,45 +8,36 @@ let right = document.getElementById("right");
 //With querySelectorALl, must loop over elements (like an array of each element with .semester class
 let labels = document.querySelectorAll(".label");
 
+//The fetch method in JavaScript is used to make HTTP requests to fetch resources.
+//Simplifies asynchronous data fetching in JavaScript and
+//used for interacting with APIs to retrieve and sned
+//data asynchronously over the web.
 
-
-function completeBigRequirement(string) {
-    let graduation = document.getElementById(string);
-    let total = graduation.getElementsByClassName("specific");
-    let checks = graduation.getElementsByClassName("checked");
-    if (total.length === checks.length) {
-        return true;
+//Fetch is promise-based (promises are the foundation of asynchronous programming)
+//Promise will resolve or reject
+fetch("https://contenttest.osu.edu/v2/classes/search?q=cse")
+.then(response => {
+    if(!response.ok){
+        throw new Error("Could not fetch resource");
     }
-    else {
-        return false;
-    }
-}
+    return response.json();
+}) 
+.then(data => {
+    const name = data.data.courses[0].course.subject + data.data.courses[0].course.catalogNumber;
+    let newDiv = document.createElement("div");
+    let img = document.createElement("img");
+    var text = document.createTextNode(name);
 
-function complete(string) {
-    let graduation = document.getElementById(string);
-    if (completeBigRequirement(string)) {
-        graduation.classList.add("checked");
-    }
-    else {
-        graduation.classList.remove("checked");
-    }
-}
+    img.setAttribute("src", "drag_drop_icon.png")
+    img.setAttribute("draggable", false);
+    
+    newDiv.classList.add("list");
+    newDiv.appendChild(img);
+    newDiv.appendChild(text);
+    newDiv.setAttribute("draggable",true)
+    right.appendChild(newDiv);
 
-function completeRequirement() {
-    let required = document.querySelectorAll("#task-1");
-    required.forEach(function (item) {
-        let arr = middle.getElementsByClassName("list");
-        if (arr.length > 0) {
-            item.classList.add("checked");
-
-        }
-        else {
-            item.classList.remove("checked");
-        }
-    });
-}
-
-
+    
 for (list of lists) {
     list.addEventListener("dragstart", function (e) {
         let selected = e.target;
@@ -86,30 +77,47 @@ labels.forEach(function (item) {
     });
 
 });
-//The fetch method in JavaScript is used to make HTTP requests to fetch resources.
-//Simplifies asynchronous data fetching in JavaScript and
-//used for interacting with APIs to retrieve and sned
-//data asynchronously over the web.
-
-//Fetch is promise-based (promises are the foundation of asynchronous programming)
-//Promise will resolve or reject
-fetch("https://contenttest.osu.edu/v2/classes/search?q=cse")
-.then(response => {
-    if(!response.ok){
-        throw new Error("Could not fetch resource");
-    }
-    return response.json();
-}) 
-.then(data => {
-    const name = data.data.courses[0].course.subject + data.data.courses[0].course.catalogNumber;
-    const newDiv = document.createElement("div");
-    newDiv.innerText = name;
-    newDiv.classList.add("list");
-    $(newDiv).draggable
-    right.appendChild(newDiv);
-
-
 })
 .catch(error => console.log(error));
+
+
+function completeBigRequirement(string) {
+    let graduation = document.getElementById(string);
+    let total = graduation.getElementsByClassName("specific");
+    let checks = graduation.getElementsByClassName("checked");
+    if (total.length === checks.length) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+function complete(string) {
+    let graduation = document.getElementById(string);
+    if (completeBigRequirement(string)) {
+        graduation.classList.add("checked");
+    }
+    else {
+        graduation.classList.remove("checked");
+    }
+}
+
+function completeRequirement() {
+    let required = document.querySelectorAll("#task-1");
+    required.forEach(function (item) {
+        let arr = middle.getElementsByClassName("list");
+        if (arr.length > 0) {
+            item.classList.add("checked");
+
+        }
+        else {
+            item.classList.remove("checked");
+        }
+    });
+}
+
+
+
 
 
