@@ -1,7 +1,10 @@
 
+
+
 let lists = document.getElementsByClassName("list");
 let listContainer = document.getElementById("list-container");
 let dragAndDrop = document.querySelectorAll(".semester, #right, #left-completed");
+let right = document.getElementById("right");
 //With querySelectorALl, must loop over elements (like an array of each element with .semester class
 let labels = document.querySelectorAll(".label");
 
@@ -90,14 +93,23 @@ labels.forEach(function (item) {
 
 //Fetch is promise-based (promises are the foundation of asynchronous programming)
 //Promise will resolve or reject
-fetch("https://contenttest.osu.edu/v2/classes/search?q=Software")
+fetch("https://contenttest.osu.edu/v2/classes/search?q=cse")
 .then(response => {
     if(!response.ok){
         throw new Error("Could not fetch resource");
     }
     return response.json();
 }) 
-.then(data => console.log(data.data.courses))
+.then(data => {
+    const name = data.data.courses[0].course.subject + data.data.courses[0].course.catalogNumber;
+    const newDiv = document.createElement("div");
+    newDiv.innerText = name;
+    newDiv.classList.add("list");
+    $(newDiv).draggable
+    right.appendChild(newDiv);
+
+
+})
 .catch(error => console.log(error));
 
 
