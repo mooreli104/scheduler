@@ -1,12 +1,10 @@
-
-
-
 let lists = document.getElementsByClassName("list");
 let listContainer = document.getElementById("list-container");
 let dragAndDrop = document.querySelectorAll(".semester, #right, #left-completed");
 let right = document.getElementById("right");
 //With querySelectorALl, must loop over elements (like an array of each element with .semester class
 let labels = document.querySelectorAll(".label");
+let CSE = document.querySelectorAll("#task-1");
 
 //The fetch method in JavaScript is used to make HTTP requests to fetch resources.
 //Simplifies asynchronous data fetching in JavaScript and
@@ -23,6 +21,7 @@ fetch("https://contenttest.osu.edu/v2/classes/search?q=cse")
     return response.json();
 }) 
 .then(data => {
+    
     const name = data.data.courses[0].course.subject + data.data.courses[0].course.catalogNumber;
     let newDiv = document.createElement("div");
     let img = document.createElement("img");
@@ -77,6 +76,14 @@ labels.forEach(function (item) {
     });
 
 });
+
+CSE.forEach(function(item){
+    item.addEventListener("click", function(e){
+        e.stopPropagation();
+        console.log("CLICKED");
+    })
+})
+
 })
 .catch(error => console.log(error));
 
