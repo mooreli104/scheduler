@@ -8,10 +8,10 @@ let specificClass = document.querySelectorAll("#task-1");
  */
 requirements.forEach(function (requirement) {
     requirement.addEventListener("click", function (e) {
-            let majorRequirement = e.target;
-            let classes = majorRequirement.getElementsByClassName("content");
-            classes[0].classList.toggle("fulfilled");
-            majorRequirement.classList.toggle("fulfilled");
+        let majorRequirement = e.target;
+        let classes = majorRequirement.getElementsByClassName("content");
+        classes[0].classList.toggle("fulfilled");
+        majorRequirement.classList.toggle("fulfilled");
     });
 });
 
@@ -19,8 +19,8 @@ requirements.forEach(function (requirement) {
  * For every specific class that is needed for a requirement, add a click event listener
  * that will populate the classes section with the class that is clicked.
  */
-specificClass.forEach(function(specificClass){
-    specificClass.addEventListener("click", function(e){
+specificClass.forEach(function (specificClass) {
+    specificClass.addEventListener("click", function (e) {
         //stopPropagation() stops the event from travelling back to the parent node.
         e.stopPropagation();
         fetchTheClass();
@@ -71,21 +71,23 @@ function checkClassRequirement() {
 }
 
 /**
- * 
+ * Checks if a general requirement has been completed based on the classes in the schedule.
  */
-function fetchTheClass(){
-fetch("https://contenttest.osu.edu/v2/classes/search?q=cse")
-.then(response => {
-    if(!response.ok){
-        throw new Error("Could not fetch resource");
-    }
-    return response.json();
-}) 
-.then(data => {
+function checkGeneralRequirement() {
+    let generalRequirements = document.querySelectorAll(".list-requirements")
+    generalRequirements.forEach(function (i) {
+        let parent = i.parentElement.parentElement.parentElement;
+        complete(parent.id);
+    })
+}
 
-    //Creating new class element can be its own function.
+/**
+ * Takes an input JSON object and retrieves the class name and catalog number.
+ * Then creates an element for the class name and number.
+ */
+function createClassElement(data) {
+
     let classSection = document.getElementById("classes");
-
     const className = data.data.courses[0].course.subject + data.data.courses[0].course.catalogNumber;
     let newClass = document.createElement("div");
     let img = document.createElement("img");
@@ -93,39 +95,58 @@ fetch("https://contenttest.osu.edu/v2/classes/search?q=cse")
 
     img.setAttribute("src", "drag_drop_icon.png")
     img.setAttribute("draggable", false);
-    
+
     newClass.classList.add("class");
     newClass.appendChild(img);
     newClass.appendChild(text);
-    newClass.setAttribute("draggable",true)
+    newClass.setAttribute("draggable", true)
     classSection.appendChild(newClass);
 
-let ohioStateClasses = document.getElementsByClassName("class");
-for (oneClass of ohioStateClasses) {
-    oneClass.addEventListener("dragstart", function (e) {
-        let selectedClass = e.target;
-        let dragAndDropDestination = document.querySelectorAll(".semester, #classes, #left-completed");
-        dragAndDropDestination.forEach(function (item) {
-
-            item.addEventListener("dragover", function (e) {
-                e.preventDefault();
-            })
-
-            item.addEventListener("drop", function (e) {
-                if (selectedClass != null) {
-                    item.appendChild(selectedClass);
-                    checkClassRequirement();
-                    let generalRequirements = document.querySelectorAll(".list-requirements")
-                    generalRequirements.forEach(function(i){
-                        let parent = i.parentElement.parentElement.parentElement;
-                        complete(parent.id);
-                    })
-                }
-                selectedClass= null;
-            })
-        });
-    });
 }
-})
-.catch(error => console.log(error));
+
+function createDragAndDropFunctionality() {
+    let ohioStateClasses = document.getElementsByClassName("class");
+    for (oneClass of ohioStateClasses) {
+        oneClass.addEventListener("dragstart", function (e) {
+            let selectedClass = e.target;
+            let dragAndDropDestination = document.querySelectorAll(".semester, #classes, #left-completed");
+            dragAndDropDestination.forEach(function (item) {
+
+                item.addEventListener("dragover", function (e) {
+                    e.preventDefault();
+                })
+
+                item.addEventListener("drop", function (e) {
+                    if (selectedClass != null) {
+                        item.appendChild(selectedClass);
+                        checkClassRequirement();
+                        checkGeneralRequirement();
+                    }
+                    selectedClass = null;
+                })
+            });
+        });
+    }
+}
+
+/**
+ * Fetches a class from the OSU course catalog given the name, 
+ * creates a designed element for that class, adds drag and drop functionality,
+ * and checks if any requirements are met if class is dragged into the schedule.
+ */
+function fetchTheClass() {
+    fetch("https://contenttest.osu.edu/v2/classes/search?q=cse")
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Could not fetch resource");
+            }
+            return response.json();
+        })
+        .then(data => {
+
+            createClassElement(data);
+            createDragAndDropFunctionality();
+
+        })
+        .catch(error => console.log(error));
 }
