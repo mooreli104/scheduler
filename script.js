@@ -29,28 +29,6 @@ specificClass.forEach(function (specificClass) {
 });
 
 
-function completeBigRequirement(string) {
-    let graduation = document.getElementById(string);
-    let total = graduation.getElementsByClassName("specific");
-    let checks = graduation.getElementsByClassName("checked");
-    if (total.length === checks.length) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-function complete(string) {
-    let graduation = document.getElementById(string);
-    if (completeBigRequirement(string)) {
-        graduation.classList.add("checked");
-    }
-    else {
-        graduation.classList.remove("checked");
-    }
-}
-
 /**
  * Checks if a required class has been added to the schedule, 
  * marks the class requirement as "checked" if it has 
@@ -77,7 +55,14 @@ function checkGeneralRequirement() {
     let generalRequirements = document.querySelectorAll(".list-requirements")
     generalRequirements.forEach(function (i) {
         let parent = i.parentElement.parentElement.parentElement;
-        complete(parent.id);
+        let total = parent.getElementsByClassName("specific-class");
+        let checks = parent.getElementsByClassName("checked");
+        if (total.length===checks.length) {
+            parent.classList.add("checked");
+        }
+        else {
+            parent.classList.remove("checked");
+        }
     })
 }
 
@@ -104,6 +89,12 @@ function createClassElement(data) {
 
 }
 
+/**
+ * For every class, add a drag event listener, and for each section of the webpage
+ * besides "requirements" add the drag and drop event listener. Then after a class
+ * is dropped into the schedule, check off the class requirement that has been fulfilled
+ * and check if a general requirement has been fulfilled.
+ */
 function createDragAndDropFunctionality() {
     let ohioStateClasses = document.getElementsByClassName("class");
     for (oneClass of ohioStateClasses) {
